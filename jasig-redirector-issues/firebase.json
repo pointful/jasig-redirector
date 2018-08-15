@@ -1,0 +1,27 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ] ,
+    "redirects": [ {
+      "source" : "/browse/:path*",
+      "destination" : "https://apereo.atlassian.net/browse/:path*",
+      "type" : 301
+    } , {
+      "source" : "/projects/:path*",
+      "destination" : "https://apereo.atlassian.net/projects/:path*",
+      "type" : 301
+    } , {
+      "source" : "/secure/:path*",
+      "destination" : "https://apereo.atlassian.net/secure/:path*",
+      "type" : 301
+    } , {
+      "source" : "/**",
+      "destination" : "https://apereo.atlassian.net/secure/",
+      "type" : 301
+    } ]
+  }
+}
