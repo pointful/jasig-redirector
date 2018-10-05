@@ -7,8 +7,12 @@
       "**/node_modules/**"
     ] ,
     "redirects": [ {
-      "source" : "/display/:space*",
-      "destination" : "https://apereo.atlassian.net/wiki/spaces/:space*",
+      "source" : "/display/:space",
+      "destination" : "https://apereo.atlassian.net/wiki/spaces/:space",
+      "type" : 301
+    }, {
+      "source" : "/display/:space/**",
+      "destination" : "https://apereo.atlassian.net/wiki/spaces/:space",
       "type" : 301
     }, {
       "source" : "/**",

@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jasig</groupId>
+    <artifactId>jasig-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>12</version>
+
+    <name>Jasig Parent Project</name>
+    <description>Defaults for Jasig Maven2 projects.</description>
+    
+    <organization>
+        <name>Jasig</name>
+        <url>http://www.jasig.org</url>
+    </organization>
+    
+    <licenses>
+        <license>
+            <name>The BSD License</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+    
+    <scm>
+        <connection>scm:svn:https://www.ja-sig.org/svn/jasig-parent/tags/rel-12</connection>
+        <developerConnection>scm:svn:https://www.ja-sig.org/svn/jasig-parent/tags/rel-12</developerConnection>
+        <url>http://developer.jasig.org/source/browse/jasigsvn/jasig-parent/tags/rel-12</url>
+    </scm>
+    
+    <properties>
+        <jasig-site-base>http://developer.jasig.org/projects</jasig-site-base>
+        <jasig-site-dist-base>scp://developer.jasig.org/jasig/htdocs/developer.ja-sig.org/projects</jasig-site-dist-base>
+        
+        <jasig-issues-base>http://www.ja-sig.org/issues/browse</jasig-issues-base>
+        <jasig-issues-system>Jira</jasig-issues-system>
+        
+        <jasig-scm-type>scm:svn:</jasig-scm-type>
+        <jasig-scm-base>https://www.ja-sig.org/svn</jasig-scm-base>
+        <jasig-scm-base-mvn>${jasig-scm-type}${jasig-scm-base}</jasig-scm-base-mvn>
+        <jasig-scm-view-base>http://developer.jasig.org/source/browse/jasigsvn</jasig-scm-view-base>
+        
+        <jasig-short-license-url>${jasig-scm-base}/jasig-parent/tags/rel-12/short-license-header.txt</jasig-short-license-url>
+    </properties>
+    
+    <distributionManagement>
+        <repository>
+            <id>jasig.maven</id>
+            <name>Jasig Maven 2 Repository</name>
+            <url>http://developer.jasig.org/repo/content/repositories/m2</url>
+        </repository>
+        <snapshotRepository>
+            <id>jasig.maven</id>
+            <name>Jasig Maven 2 Repository (Snapshots and Test Builds)</name>
+            <url>http://developer.jasig.org/repo/content/repositories/m2-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>jasig-m2</id>
+            <name>Jasig Maven2 Repository</name>
+            <url>http://developer.jasig.org/repo/content/repositories/m2</url>
+        </repository>
+        <repository>
+            <id>jasig-m2-snapshot</id>
+            <name>Jasig Maven2 Repository</name>
+            <url>http://developer.jasig.org/repo/content/repositories/m2-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>com.google.code.maven-license-plugin</groupId>
+                    <artifactId>maven-license-plugin</artifactId>
+                    <version>1.4.0</version>
+                    <configuration>
+                        <basedir>${basedir}</basedir>  
+                        <header>${jasig-short-license-url}</header>
+                        <aggregate>true</aggregate>
+                        <excludes>
+                            <exclude>LICENSE</exclude>
+                            <exclude>NOTICE</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.google.code.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

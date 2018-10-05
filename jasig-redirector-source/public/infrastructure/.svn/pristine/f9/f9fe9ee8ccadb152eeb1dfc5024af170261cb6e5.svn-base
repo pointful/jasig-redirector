@@ -1,0 +1,6 @@
+# Configuration for the EC2 setup scripts
+
+export ELASTIC_IP=
+export ELASTIC_LOAD_BALANCER=JasigLiveBuilds
+export APACHE_CONFIG_DIR=/etc/apache2
+export BAMBOO_M2_DIR=/home/bamboo/.m2/

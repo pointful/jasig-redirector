@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+	ServerAdmin webmaster@jasig.org
+
+	ErrorLog "|/usr/bin/cronolog -l ${APACHE_LOG_DIR}/error.log ${APACHE_LOG_DIR}/%Y/%m/%Y-%m-%d-error_log"
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog "|/usr/bin/cronolog -l ${APACHE_LOG_DIR}/access.log ${APACHE_LOG_DIR}/%Y/%m/%Y-%m-%d-access.log" combined
+
+    # Redirect ALL traffic to HTTPS
+    RewriteEngine on
+
+    RewriteCond %{HTTPS} off [NC]
+    RewriteRule ^/(.*) https://%{HTTP_HOST}/$1 [R=permanent,L]
+</VirtualHost>

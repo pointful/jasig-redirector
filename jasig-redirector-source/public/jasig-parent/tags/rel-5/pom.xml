@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    
+    <!-- 
+     | Child POMs should define the following properties:
+     |    issues.projectKey - The JIRA project key used for issue tracking
+     |    scm.path - extra path information for the SVN url, should be empty or start with a /
+     +-->
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jasig</groupId>
+    <artifactId>jasig-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>5</version>
+
+    <name>JA-SIG Parent Project</name>
+    <description>Defaults for JA-SIG Maven2 projects.</description>
+    <url>http://developer.ja-sig.org/projects/${pom.artifactId}/</url>
+    
+    <organization>
+        <name>Java Architectures Special Interest Group</name>
+        <url>http://www.ja-sig.org</url>
+    </organization>
+    <inceptionYear>1998</inceptionYear>
+    
+    <issueManagement>
+        <url>http://www.ja-sig.org/issues/browse/${issues.projectKey}</url>
+        <system>Jira</system>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:svn:https://www.ja-sig.org/svn${scm.path}</connection>
+        <developerConnection>scm:svn:https://www.ja-sig.org/svn${scm.path}</developerConnection>
+        <url>http://developer.ja-sig.org/source/browse/jasigsvn${scm.path}</url>
+    </scm>
+    
+    <distributionManagement>
+        <site>
+            <id>developer.jasig</id>
+            <url>scp://developer.ja-sig.org/jasig/htdocs/developer/projects/${pom.artifactId}</url>
+        </site>
+        <repository>
+            <id>developer.jasig</id>
+            <name>JA-SIG Maven 2 Repository</name>
+            <url>scp://developer.ja-sig.org/jasig/htdocs/developer/maven2</url>
+        </repository>
+        <snapshotRepository>
+            <id>developer.jasig</id>
+            <name>JA-SIG Maven 2 Repository (Snapshots and Test Builds)</name>
+            <url>scp://developer.ja-sig.org/jasig/htdocs/developer/maven2-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>jasig-snapshot</id>
+            <name>JA-SIG Maven2 Repository</name>
+            <url>http://developer.ja-sig.org/maven2-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>jasig-repository</id>
+            <name>JA-SIG Maven2 Repository</name>
+            <url>http://developer.ja-sig.org/maven2</url>
+        </repository>
+    </repositories>
+
+    <licenses>
+        <license>
+            <name>JA-SIG Collabrative Licence</name>
+            <url>http://www.uportal.org/license.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>surefire-report-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jxr-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <linkXref>true</linkXref>
+                    <sourceEncoding>utf-8</sourceEncoding>
+                    <minimumTokens>100</minimumTokens>
+                    <targetJdk>1.5</targetJdk>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>changelog-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>taglist-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>

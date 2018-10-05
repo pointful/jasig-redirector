@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.jasig</groupId>
+    <artifactId>jasig-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>3</version>
+
+    <name>JA-SIG Parent Project</name>
+    <description>Defaults for JA-SIG Maven2 projects.</description>
+    <url>http://developer.ja-sig.org/projects/${pom.artifactId}/</url>
+    <organization>
+        <name>Java Architectures Special Interest Group</name>
+        <url>http://www.ja-sig.org</url>
+    </organization>
+    <inceptionYear>1998</inceptionYear>
+    <issueManagement>
+        <url>http://www.ja-sig.org/issues/</url>
+        <system>Jira</system>
+    </issueManagement>
+    <distributionManagement>
+        <site>
+            <id>developer.jasig</id>
+            <url>scp://developer.ja-sig.org/jasig/htdocs/developer/projects/${pom.artifactId}</url>
+        </site>
+        <repository>
+            <id>developer.jasig</id>
+            <name>JA-SIG Maven 2 Repository</name>
+            <url>scp://developer.ja-sig.org/jasig/htdocs/developer/maven2</url>
+        </repository>
+        <snapshotRepository>
+            <id>developer.jasig</id>
+            <name>JA-SIG Maven 2 Repository (Snapshots and Test Builds)</name>
+            <url>scp://developer.ja-sig.org/jasig/htdocs/developer/maven2-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
+    <repositories>
+        <repository>
+            <id>jasig-repository</id>
+            <name>JA-SIG Maven2 Repository</name>
+            <url>http://developer.ja-sig.org/maven2-snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>jasig-repository</id>
+            <name>JA-SIG Maven2 Repository</name>
+            <url>http://developer.ja-sig.org/maven2</url>
+        </repository>
+    </repositories>
+    <licenses>
+        <license>
+            <name>JA-SIG Collabrative Licence</name>
+            <url>http://www.uportal.org/license.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

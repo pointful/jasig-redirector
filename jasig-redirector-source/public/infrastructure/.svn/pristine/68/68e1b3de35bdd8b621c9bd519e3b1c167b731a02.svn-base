@@ -1,0 +1,7 @@
+
+# Appended to /etc/hosts by configuration scripts
+127.0.8.40 up40-nightly.local
+127.0.8.40 up40-nightly.jasig.org
+
+127.0.8.41 up41-nightly.local
+127.0.8.41 up41-nightly.jasig.org
